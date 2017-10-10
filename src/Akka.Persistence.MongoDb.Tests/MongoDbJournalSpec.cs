@@ -7,7 +7,7 @@
 
 using System;
 using System.Configuration;
-using Akka.Persistence.TestKit.Journal;
+using Akka.Persistence.TCK.Journal;
 using Mongo2Go;
 using MongoDB.Driver;
 using Xunit;

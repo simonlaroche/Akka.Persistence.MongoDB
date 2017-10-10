@@ -7,10 +7,10 @@
 
 using System;
 using System.Configuration;
-using Akka.Persistence.TestKit.Snapshot;
 using Mongo2Go;
 using MongoDB.Driver;
 using Xunit;
+using Akka.Persistence.TCK.Snapshot;
 
 namespace Akka.Persistence.MongoDb.Tests
 {
