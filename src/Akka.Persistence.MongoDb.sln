@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Persistence.MongoDb", "Akka.Persistence.MongoDb\Akka.Persistence.MongoDb.csproj", "{12E044EF-08A2-428B-AAF5-C3D328860C4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akka.Persistence.MongoDb", "Akka.Persistence.MongoDb\Akka.Persistence.MongoDb.csproj", "{12E044EF-08A2-428B-AAF5-C3D328860C4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Persistence.MongoDb.Tests", "Akka.Persistence.MongoDb.Tests\Akka.Persistence.MongoDb.Tests.csproj", "{32A2ACBE-8A3C-4093-8C13-D65B113B3327}"
 EndProject
@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{86AAC379
 		..\appveyor.yml = ..\appveyor.yml
 		..\build.cmd = ..\build.cmd
 		..\build.fsx = ..\build.fsx
+		..\build.ps1 = ..\build.ps1
 		..\build.sh = ..\build.sh
 		..\README.md = ..\README.md
 	EndProjectSection
@@ -41,5 +42,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B1BCA8C-0EB6-44B1-BB31-78C90A6B0D68}
 	EndGlobalSection
 EndGlobal

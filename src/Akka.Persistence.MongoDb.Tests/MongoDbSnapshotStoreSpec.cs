@@ -5,8 +5,6 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System;
-using System.Configuration;
 using Mongo2Go;
 using MongoDB.Driver;
 using Xunit;
@@ -17,7 +15,7 @@ namespace Akka.Persistence.MongoDb.Tests
     [Collection("MongoDbSpec")]
     public class MongoDbSnapshotStoreSpec : SnapshotStoreSpec
     {
-        private static readonly MongoDbRunner Runner = MongoDbRunner.Start(ConfigurationManager.AppSettings[0]);
+        private readonly MongoDbRunnerFixture _mongoDbRunnerFixture;
 
         private static readonly string SpecConfig = @"
             akka.test.single-expect-default = 3s
@@ -34,29 +32,20 @@ namespace Akka.Persistence.MongoDb.Tests
                 }
             }";
 
-        public MongoDbSnapshotStoreSpec() : base(CreateSpecConfig(), "MongoDbSnapshotStoreSpec")
+        public MongoDbSnapshotStoreSpec(MongoDbRunnerFixture mongoDbRunnerFixture) : base(CreateSpecConfig(mongoDbRunnerFixture.ConnectionString), "MongoDbSnapshotStoreSpec")
         {
-            AppDomain.CurrentDomain.DomainUnload += (_, __) =>
-            {
-                try
-                {
-                    Runner.Dispose();
-                }
-                catch { }
-            };
-
-
+            _mongoDbRunnerFixture = mongoDbRunnerFixture;
             Initialize();
         }
-
-        private static string CreateSpecConfig()
+        
+        private static string CreateSpecConfig(string connectionString)
         {
-            return SpecConfig.Replace("<ConnectionString>", Runner.ConnectionString + "akkanet");
+            return SpecConfig.Replace("<ConnectionString>", connectionString + "akkanet");
         }
 
         protected override void Dispose(bool disposing)
         {
-            new MongoClient(Runner.ConnectionString)
+            new MongoClient(_mongoDbRunnerFixture.ConnectionString)
                 .GetDatabase("akkanet")
                 .DropCollectionAsync("SnapshotStore").Wait();
 

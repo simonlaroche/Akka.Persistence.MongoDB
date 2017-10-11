@@ -1,3 +1,6 @@
+#### 1.3.1 July 30 2016 ####
+Updated to Akka.Persistence 1.3.1
+
 #### 1.1.0 July 30 2016 ####
 Updated to Akka.Persistence 1.1.1
 
